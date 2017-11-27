@@ -32,6 +32,7 @@ To see all available configuration flags:
 
 Metrics are made available at port 9317 by default.
 The metrics follow this format:
+
     # HELP telldus_devices_count Number of Devices
     # TYPE telldus_devices_count gauge
     telldus_devices_count 4
