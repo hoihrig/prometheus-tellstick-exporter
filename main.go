@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	listenPort           = flag.String("listen-address", ":8080", "The address to listen on for HTTP requests.")
+	listenPort           = flag.String("listen-address", ":9317", "The address to listen on for HTTP requests.")
 	metricsPath          = flag.String("metrics-url", "/metrics", "The url used for the metrics endpoint.")
 	localtellstickApiUrl = flag.String("local-tellstick-host", "", "The Tellstick Host to connect to including protocol.")
 	telldusapiToken      = flag.String("telldus-token", "", "The API Token for metric collection.")
