@@ -27,3 +27,24 @@ Building:
 To see all available configuration flags:
 
     ./telldus_exporter -h
+
+## Metrics
+
+Metrics are made available at port 9317 by default.
+The metrics follow this format:
+	# HELP telldus_devices_count Number of Devices
+	# TYPE telldus_devices_count gauge
+	telldus_devices_count 4
+	# HELP telldus_exporter_build_info telldus_exporter build_info
+	# TYPE telldus_exporter_build_info gauge
+	telldus_exporter_build_info{golang_version="go1.9.2",version="0.1"} 1
+	# HELP telldus_sensors_count Number of Sensors
+	# TYPE telldus_sensors_count gauge
+	telldus_sensors_count 7
+	# HELP telldus_sensors_metric Value of the Sensor
+	# TYPE telldus_sensors_metric gauge
+	telldus_sensors_metric{Sensorname="Office A",type="humidity"} 29
+	telldus_sensors_metric{Sensorname="Office A",type="temp"} 24.1
+	telldus_sensors_metric{Sensorname="Outside",type="temp"} 1
+	telldus_sensors_metric{Sensorname="Kitchen B",type="humidity"} 22
+	telldus_sensors_metric{Sensorname="Kitchen B",type="temp"} 22.6
