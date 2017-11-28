@@ -27,6 +27,7 @@ jobs:
       - image: circleci/golang:1.8
     working_directory: /go/src/github.com/hoihrig/prometheus-tellstick-exporter
     steps:
+      - checkout
       - run: go get github.com/mitchellh/gox
       - run: go get github.com/tcnksm/ghr
       - run: go get
