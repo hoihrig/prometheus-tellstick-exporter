@@ -42,6 +42,9 @@ workflows:
   build-deploy:
     jobs:
       - build-job
+          filters:
+            tags:
+              only: /.*/
       - deploy-job:
           requires:
             - build-job
