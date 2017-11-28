@@ -45,5 +45,6 @@ workflows:
           requires:
             - build-job
           filters:
-            tag: /v.*/
+            tags:
+              only: /v.*/
             
