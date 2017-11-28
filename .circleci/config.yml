@@ -9,7 +9,7 @@ machine:
 
 general:
   artifacts:
-  - dist
+  - "dist"
 
 jobs:
   build:
