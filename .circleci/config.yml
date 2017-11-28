@@ -20,6 +20,8 @@ jobs:
     working_directory: /go/src/github.com/hoihrig/prometheus-tellstick-exporter
     steps:
       - checkout
+      - run: go get
+      - run: go build
 
 deployment:
   publish:
@@ -31,3 +33,4 @@ deployment:
       - gox -rebuild --osarch="darwin/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.darwin-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
       - gox -rebuild --osarch="linux/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.linux-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
       - gox -rebuild --osarch="linux/arm64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.linux-arm64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
+      - ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace $CIRCLE_TAG dist/
