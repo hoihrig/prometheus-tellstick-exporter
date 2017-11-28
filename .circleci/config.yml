@@ -17,4 +17,5 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
+      - run: go get
       - run: go build
