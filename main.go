@@ -7,7 +7,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
-	telldusLocal "telldus_exporter/telldus_local"
+	telldusLocal "github.com/hoihrig/prometheus-tellstick-exporter/telldus_local"
 )
 
 var (
