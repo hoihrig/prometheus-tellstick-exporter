@@ -24,8 +24,8 @@ jobs:
       # specify any bash command here prefixed with `run:`
       - run: go get github.com/mitchellh/gox
       - run: go get
-      - run: gox -rebuild --osarch="darwin/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_BUILD_NUM.darwin-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
-      - run: gox -rebuild --osarch="linux/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_BUILD_NUM.linux-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
-      - run: gox -rebuild --osarch="linux/arm64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_BUILD_NUM.linux-arm64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
+      - run: gox -rebuild --osarch="darwin/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.darwin-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
+      - run: gox -rebuild --osarch="linux/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.linux-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
+      - run: gox -rebuild --osarch="linux/arm64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.linux-arm64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
       - store_artifacts:
           path: dist
