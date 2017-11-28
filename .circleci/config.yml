@@ -7,6 +7,10 @@ machine:
   environment:
     SRC_LOCATION:     "/home/ubuntu/.go_workspace/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
+general:
+  artifacts:
+  - dist
+
 jobs:
   build:
     docker:
