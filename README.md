@@ -1,4 +1,5 @@
 # Tellstick Local Exporter
+[![Circle CI](https://circleci.com/gh/hoihrig/prometheus-tellstick-exporter.svg?style=shield)](https://circleci.com/gh/hoihrig/prometheus-tellstick-exporter)
 
 Prometheus exporter collecting Sensor information from TellDus TellStick devices having a local API, e.g. TellStick Net v2 and TellStick ZNet v1/2
 
