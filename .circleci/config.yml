@@ -7,10 +7,6 @@ machine:
   environment:
     SRC_LOCATION:     "/home/ubuntu/.go_workspace/src/github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
 
-general:
-  artifacts:
-  - "dist"
-
 jobs:
   build:
     docker:
@@ -29,3 +25,6 @@ jobs:
       - run: go get github.com/mitchellh/gox
       - run: go get
       - run: gox -rebuild --osarch="darwin/amd64"  -ldflags "$GO_LDFLAGS" -output "dist/tellstick_exporter" && cd dist && tar -cvzf tellstick_exporter-$CIRCLE_TAG.darwin-amd64.tar.gz tellstick_exporter && rm tellstick_exporter && cd ..
+
+      - store_artifacts:
+          path: dist
