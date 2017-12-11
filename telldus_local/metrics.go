@@ -24,7 +24,7 @@ func AddMetrics() map[string]*prometheus.Desc {
 	Metrics["Metric"] = prometheus.NewDesc(
 		prometheus.BuildFQName("telldus", "sensors", "metric"),
 		"Value of the Sensor",
-		[]string{"Sensorname", "type"}, nil,
+		[]string{"Sensorname", "type", "unit"}, nil,
 	)
 
 	log.Info("Metric Descriptions added!")
@@ -40,7 +40,8 @@ func (e *Exporter) processMetrics(sl *SensorList, dc float64, ch chan<- promethe
 		if hasData(s) {
 			for _, sd := range s.Data {
 				if s.Name != "" {
-					ch <- prometheus.MustNewConstMetric(e.Metrics["Metric"], prometheus.GaugeValue, sd.Value, s.Name, sd.Name)
+					unitLookup(sd.Name, sd.Scale)
+					ch <- prometheus.MustNewConstMetric(e.Metrics["Metric"], prometheus.GaugeValue, sd.Value, s.Name, sd.Name, unitLookup(sd.Name, sd.Scale))
 				}
 			}
 		}

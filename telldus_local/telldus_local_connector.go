@@ -86,3 +86,46 @@ func makeRequest(host TellStickHost, endpoint string) ([]byte, error) {
 	body, err := ioutil.ReadAll(resp.Body)
 	return body, err
 }
+
+func unitLookup(datatype string, scale int) (string) {
+	switch datatype {
+		case "temp":
+			if scale == 0 {
+				return "Celsius"
+			}
+			if scale == 1 {
+				return "Fahrenheit"
+			}
+		case "humidity":
+			return "%"
+		case "watt":
+			if scale == 0 {
+				return "KWh"
+			}
+			if scale == 2 {
+				return "Watt"
+			}
+		case "uv":
+			return "Index"
+		case "lum":
+			if scale == 0 {
+				return "%"
+			}
+			if scale == 1 {
+				return "Lux"
+			}
+		case "rrate":
+			return "mm/h"
+		case "rtot":
+			return "mm"
+		case "wgust":
+			return "m/s"
+		case "wdir":
+			return "Direction"
+		case "barpress":
+			return "kPa"
+		default:
+			return ""
+	}
+	return ""
+}
