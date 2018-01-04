@@ -31,9 +31,9 @@ type SensorList struct {
 }
 
 type SensorData struct {
-	Name  string  `json:"name"`
-	Scale int     `json:"scale"`
-	Value float64 `json:"value"`
+	Name  string `json:"name"`
+	Scale int    `json:"scale"`
+	Value string `json:"value"`
 }
 
 type DeviceInfo struct {

@@ -3,6 +3,7 @@ package telldus_local
 import (
 	"github.com/prometheus/client_golang/prometheus"
 	log "github.com/sirupsen/logrus"
+	"strconv"
 )
 
 func AddMetrics() map[string]*prometheus.Desc {
@@ -40,8 +41,8 @@ func (e *Exporter) processMetrics(sl *SensorList, dc float64, ch chan<- promethe
 		if hasData(s) {
 			for _, sd := range s.Data {
 				if s.Name != "" {
-					unitLookup(sd.Name, sd.Scale)
-					ch <- prometheus.MustNewConstMetric(e.Metrics["Metric"], prometheus.GaugeValue, sd.Value, s.Name, sd.Name, unitLookup(sd.Name, sd.Scale))
+					v, _ := strconv.ParseFloat(sd.Value, 64)
+					ch <- prometheus.MustNewConstMetric(e.Metrics["Metric"], prometheus.GaugeValue, v, s.Name, sd.Name, unitLookup(sd.Name, sd.Scale))
 				}
 			}
 		}
